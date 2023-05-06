@@ -5,8 +5,6 @@ WeatherForekast is a simple web application that displays weather information fo
 
 - Displays temperature, humidity, pressure, wind speed, visibility, and cloudiness for a given city.
 
-- Supports temperature units in Kelvin, Celsius, and Fahrenheit.
-
 - Displays error message if the city entered by the user is not found or if there is an issue with the API call.
 
 - Responsive design for desktop and mobile devices.
