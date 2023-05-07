@@ -47,7 +47,7 @@
   }
   
   button {
-  background: #e74c3c;
+  background: linear-gradient(to bottom right, #3498db, #2ecc71);
   border: 2px solid #c0392b;
   border-radius: 8px;
   color: #fff;
@@ -61,7 +61,6 @@
 }
 
 button:hover {
-  background: #c0392b;
   border: 2px solid #e74c3c;
 }
 
