@@ -47,21 +47,24 @@
   }
   
   button {
-    background: #1d81d2;
-    border: none;
-    border-radius: 50%;
-    color: #ffffff;
-    cursor: pointer;
-    height: 4rem;
-    margin: 0 0.5rem;
-    outline: none;
-    transition: all 0.2s ease-in-out;
-    width: 4rem;
-  }
-  
-  button:hover {
-    background: #0c4e8e;
-  }
+  background: #e74c3c;
+  border: 2px solid #c0392b;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 3rem;
+  margin: 0 1rem;
+  outline: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #c0392b;
+  border: 2px solid #e74c3c;
+}
+
   
   input.search-bar {
     background-color: #f2f2f2;
