@@ -48,8 +48,9 @@
   
   button {
   background: linear-gradient(to bottom right, #3498db, #2ecc71);
-  border: 2px solid #c0392b;
-  border-radius: 8px;
+  border: 1px solid #87CEEB;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 16px;
   color: #fff;
   cursor: pointer;
   font-size: 1.2rem;
