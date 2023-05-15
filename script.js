@@ -14,7 +14,23 @@ let weather = {
                 }
                 return response.json();
             })
-            .then((data) => this.displayWeather(data));
+            .then((data) => {
+                this.displayWeather(data);
+                return this.fetchForecast(city);
+            })
+            .then((data) => this.displayForecast(data));
+    },
+    fetchForecast: function(city) {
+        return fetch(
+            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${this.apiKey}`
+        )
+        .then((response) => {
+            if (!response.ok) {
+                alert("No forecast found.");
+                throw new Error("No forecast found.");
+            }
+            return response.json();
+        });
     },
     displayWeather: function(data) {
         const { name, sys } = data;
@@ -30,7 +46,26 @@ let weather = {
         document.querySelector(".weather").classList.remove("loading");
         document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${name}')`;
     },
-    
+    displayForecast: function(data) {
+        let forecastData = "";
+        for (let i = 0; i < data.list.length; i++) {
+            const { dt_txt } = data.list[i];
+            if (dt_txt.includes("12:00:00")) {
+                const { icon } = data.list[i].weather[0];
+                const { temp } = data.list[i].main;
+                forecastData += `
+                    <div class="forecast-item">
+                        <img class="forecast-icon" src="https://openweathermap.org/img/wn/${icon}.png" alt="">
+                        <div class="forecast-text">
+                            <p class="forecast-date">${dt_txt.slice(0, 10)}</p>
+                            <p class="forecast-temp">${temp}°C</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        document.querySelector(".forecast").innerHTML = forecastData;
+    },
       
     search: function() {
         this.fetchWeather(document.querySelector(".search-bar").value);

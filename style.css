@@ -1,56 +1,40 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background: #f2f2f2;
-    font-family: 'Open Sans', sans-serif;
-  }
-  
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-  }
-  
-  .card {
-    background-color: rgba(217, 220, 220, 0.701);
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    max-width: 30rem;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #333333;
-  }
-  
-  p {
-    font-size: 1.5rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-    color: #666666;
-  }
-  
-  .search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  button {
-  background: linear-gradient(to bottom right, #3498db, #2ecc71);
+.card {
+  background-color: rgba(217, 220, 220, 0.701);
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  max-width: 30rem;
+  padding: 2rem;
+  text-align: center;
+  margin: 0 auto; 
+}
+
+.forecast {
+  margin-top: 3rem;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+input.search-bar {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 2rem;
+  color: #333333;
+  font-size: 1.5rem;
+  outline: none;
+  padding: 0.5rem 1rem;
+  width: calc(100% - 10rem);
+}
+
+button {
+  background: linear-gradient(to bottom right, #091823, #000000);
   border: 1px solid #87CEEB;
   border-top-left-radius: 8px;
-  border-bottom-right-radius: 16px;
+  border-bottom-right-radius: 8px;
   color: #fff;
   cursor: pointer;
   font-size: 1.2rem;
@@ -65,27 +49,65 @@ button:hover {
   border: rgba(217, 220, 220, 0.701);
 }
 
-  
-  input.search-bar {
-    background-color: #f2f2f2;
-    border: none;
-    border-radius: 2rem;
-    color: #333333;
-    font-size: 1.5rem;
-    outline: none;
-    padding: 0.5rem 1rem;
-    width: calc(100% - 10rem);
-  }
-  
-  .footer {
-    background-color: #333333;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    height: 6vh;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
+.card .weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card .weather .city {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.card .weather .icon img {
+  width: 100px;
+}
+
+.card .weather .description {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #0b0b0bc8;
+}
+
+.card .weather .temp {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.card .weather .humidity,
+.card .weather .wind {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #211010, #07142a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.card .forecast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card .forecast .day .date {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333333;
+  font-family: Helvetica, Arial, sans-serif; 
+}
+
+
+.card .forecast .day .icon img {
+  width: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.card .forecast .day .temp {
+  font-size: 1.2rem;
+  color: #666666;
+}
