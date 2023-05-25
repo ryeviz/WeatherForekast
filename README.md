@@ -11,7 +11,7 @@ WeatherForekast is a simple web application that displays weather information fo
 
 # Installation
 
-Clone the repository: git clone https://github.com/yourusername/WeatherForekast.git
+Clone the repository: git clone https://github.com/vignan8/WeatherForekast.git
 
 # Usage
 - Enter the name of a city in the input box and click on "Get Weather".
