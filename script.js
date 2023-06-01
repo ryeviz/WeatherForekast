@@ -1,12 +1,12 @@
 let weather = {
     apiKey: "20a36f8e1152244bbbd9ac296d3640f2",
-    fetchWeather: function(city) {
+    fetchWeather: function (city) {
         fetch(
-                "https://api.openweathermap.org/data/2.5/weather?q=" +
+            "https://api.openweathermap.org/data/2.5/weather?q=" +
                 city +
                 "&units=metric&appid=" +
                 this.apiKey
-            )
+        )
             .then((response) => {
                 if (!response.ok) {
                     alert("No weather found.");
@@ -20,19 +20,19 @@ let weather = {
             })
             .then((data) => this.displayForecast(data));
     },
-    fetchForecast: function(city) {
+    fetchForecast: function (city) {
         return fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${this.apiKey}`
         )
-        .then((response) => {
-            if (!response.ok) {
-                alert("No forecast found.");
-                throw new Error("No forecast found.");
-            }
-            return response.json();
-        });
+            .then((response) => {
+                if (!response.ok) {
+                    alert("No forecast found.");
+                    throw new Error("No forecast found.");
+                }
+                return response.json();
+            });
     },
-    displayWeather: function(data) {
+    displayWeather: function (data) {
         const { name, sys } = data;
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
@@ -46,7 +46,7 @@ let weather = {
         document.querySelector(".weather").classList.remove("loading");
         document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${name}')`;
     },
-    displayForecast: function(data) {
+    displayForecast: function (data) {
         let forecastData = "";
         for (let i = 0; i < data.list.length; i++) {
             const { dt_txt } = data.list[i];
@@ -66,24 +66,58 @@ let weather = {
         }
         document.querySelector(".forecast").innerHTML = forecastData;
     },
-      
-    search: function() {
-        this.fetchWeather(document.querySelector(".search-bar").value);
+    search: function () {
+        const city = document.querySelector(".search-bar").value;
+        this.fetchWeather(city);
+    },
+    searchByLocation: function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${this.apiKey}`
+                    )
+                        .then((response) => {
+                            if (!response.ok) {
+                                alert("No weather found.");
+                                throw new Error("No weather found.");
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            const city = data.name;
+                            this.fetchWeather(city);
+                        });
+                },
+                (error) => {
+                    alert("Unable to retrieve your location.");
+                    console.error(error);
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by your browser.");
+        }
     },
 };
 
-
-
-document.querySelector(".search button").addEventListener("click", function() {
+document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
 });
 
 document
     .querySelector(".search-bar")
-    .addEventListener("keyup", function(event) {
+    .addEventListener("keyup", function (event) {
         if (event.key == "Enter") {
             weather.search();
         }
+    });
+
+document
+    .querySelector(".geolocation-button")
+    .addEventListener("click", function () {
+        weather.searchByLocation();
     });
 
 weather.fetchWeather("Hyderabad");
