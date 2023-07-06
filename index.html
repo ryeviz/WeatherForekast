@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +8,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
-
 <body>
     <div class="container">
         <div class="search">
-            <input type="text" class="search-bar" placeholder="Enter a city">
+            <input type="text" class="search-bar" placeholder="Type in a city name">
             <button><i class="fas fa-search"></i></button>
-            <button class="geolocation-button">
-              <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
-              Location
-            </button>        
-          </div>
-          
+            <button class="location-button">
+              <span class="icon"><i class="fas fa-map-marker-alt" style="font-size: 1.2em;"></i></span>
+            </button>
         </div>
-        <div class="card">
-          <div class="weather loading">
-            <div class="city"></div>
+    </div>
+    <div class="card">
+        <div class="weather loading">
+            <div class="city">City: <span id="city-name"></span></div>
             <div class="icon"><img src="" alt=""></div>
-            <div class="description"></div>
-            <div class="temp"></div>
-            <div class="humidity"></div>
-            <div class="wind"></div>
-          </div>
-          <div class="forecast"></div>
+            <div class="description">Description: <span id="weather-description"></span></div>
+            <div class="temp">Temperature: <span id="temperature"></span></div>
+            <div class="humidity">Humidity: <span id="humidity"></span></div>
+            <div class="wind">Wind: <span id="wind-speed"></span></div>
         </div>
-        
-        <div class="forecast">
-        </div>
+        <div class="forecast"></div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
